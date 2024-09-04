@@ -1,14 +1,18 @@
 import { Badge } from "./ui/badge";
 import {
-  Card,
   CardContent,
   CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
 import image from "../assets/growth.png";
-import image3 from "../assets/reflecting.png";
-import image4 from "../assets/looking-ahead.png";
+import astro from "../assets/Astro.svg";
+import pantalones from "../assets/pantalones.svg";
+import roboto from "../assets/roboto.png";
+import experiments from "../assets/Experiments.svg";
+import gamestation from "../assets/Gamestation.svg";
+import { MagicCard } from "@/components/magicui/magic-card";
+import { useTheme } from "@/components/theme-provider";
 
 interface FeatureProps {
   title: string;
@@ -20,19 +24,37 @@ const features: FeatureProps[] = [
   {
     title: "Responsive Design",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi nesciunt est nostrum omnis ab sapiente.",
-    image: image4,
+      "Ensure your feedback forms look great on any device, from mobile phones to desktops.",
+    image: pantalones,
   },
   {
     title: "Intuitive user interface",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi nesciunt est nostrum omnis ab sapiente.",
-    image: image3,
+      "A simple and user-friendly interface designed to make gathering feedback effortless for you and your users",
+    image: roboto,
   },
   {
     title: "AI-Powered insights",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi nesciunt est nostrum omnis ab sapiente.",
+      "Leverage advanced AI to analyze feedback and provide actionable insights to improve your services.",
+    image: astro,
+  },
+  {
+    title: "Customizable Themes",
+    description:
+      "Personalize the look and feel of your feedback forms with easy-to-use theme customization options.",
+    image: experiments,
+  },
+  {
+    title: "Real-Time Notifications",
+    description:
+      "Get instant alerts when new feedback is submitted, allowing you to respond quickly to your users’ needs.",
+    image: gamestation,
+  },
+  {
+    title: "Advanced Analytics",
+    description:
+      "Track and measure the effectiveness of your feedback collection with detailed analytics.",
     image: image,
   },
 ];
@@ -40,21 +62,19 @@ const features: FeatureProps[] = [
 const featureList: string[] = [
   "Dark/Light theme",
   "Reviews",
-  "Features",
-  "Pricing",
-  "Contact form",
-  "Our team",
+  "Notifications",
+  "Free version",
+  "Customizable",
+  "Data storage",
   "Responsive design",
-  "Newsletter",
+  "Easy to use",
   "Minimalist",
 ];
 
 export const Features = () => {
+  const { theme } = useTheme();
   return (
-    <section
-      id="features"
-      className="container py-24 sm:py-32 space-y-8"
-    >
+    <section id="features" className="container py-24 sm:py-32 space-y-8">
       <h2 className="text-3xl lg:text-4xl font-bold md:text-center">
         Many{" "}
         <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
@@ -65,10 +85,7 @@ export const Features = () => {
       <div className="flex flex-wrap md:justify-center gap-4">
         {featureList.map((feature: string) => (
           <div key={feature}>
-            <Badge
-              variant="secondary"
-              className="text-sm"
-            >
+            <Badge variant="secondary" className="text-sm">
               {feature}
             </Badge>
           </div>
@@ -77,7 +94,11 @@ export const Features = () => {
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {features.map(({ title, description, image }: FeatureProps) => (
-          <Card key={title}>
+          <MagicCard
+            gradientColor={theme === "dark" ? "#01D56F20" : "#01D56F20"}
+            className=""
+            key={title}
+          >
             <CardHeader>
               <CardTitle>{title}</CardTitle>
             </CardHeader>
@@ -91,7 +112,7 @@ export const Features = () => {
                 className="w-[200px] lg:w-[300px] mx-auto"
               />
             </CardFooter>
-          </Card>
+          </MagicCard>
         ))}
       </div>
     </section>

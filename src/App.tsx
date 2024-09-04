@@ -13,7 +13,9 @@ import { Services } from "./components/Services";
 import { Sponsors } from "./components/Sponsors";
 import { Team } from "./components/Team";
 import { Testimonials } from "./components/Testimonials";
+import { FeedbackForm } from "./components/FeedbackForm";
 import "./App.css";
+import { FeedbackButton } from "./components/feedback-button/FeedbackButton";
 
 function App() {
   return (
@@ -21,6 +23,7 @@ function App() {
       <Navbar />
       <Hero />
       <Sponsors />
+      <FeedbackForm label="Your Feedback is Valuable ❤️"/>
       <About />
       <HowItWorks />
       <Features />
@@ -31,6 +34,7 @@ function App() {
       <Pricing />
       <Newsletter />
       <FAQ />
+      {/* <FeedbackButton /> */}
       <Footer />
       <ScrollToTop />
     </>
